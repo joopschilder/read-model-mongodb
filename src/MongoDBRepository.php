@@ -39,7 +39,7 @@ class MongoDBRepository implements Repository
     /**
      * {@inheritdoc}
      */
-    public function save(Identifiable $model)
+    public function save(Identifiable $model): void
     {
         Assert::isInstanceOf($model, $this->class);
 
@@ -51,8 +51,9 @@ class MongoDBRepository implements Repository
     /**
      * {@inheritdoc}
      */
-    public function find($id)
+    public function find($id): Identifiable
     {
+        /** @var BSONDocument $document */
         $document = $this->collection->findOne(['_id' => (string) $id]);
 
         return $document ? $this->denormalizeIdentifiable($document) : null;
@@ -81,7 +82,7 @@ class MongoDBRepository implements Repository
     /**
      * {@inheritdoc}
      */
-    public function remove($id)
+    public function remove($id): void
     {
         $this->collection->deleteOne(['_id' => (string) $id]);
     }

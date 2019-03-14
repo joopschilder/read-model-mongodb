@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
+        "ext-json": "*",
         "broadway/broadway": "^2.0",
         "mongodb/mongodb": "^1.0",
         "beberlei/assert": "^3.2.0"
